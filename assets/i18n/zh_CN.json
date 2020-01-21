@@ -1,0 +1,86 @@
+{
+  "views": {
+    "blank": {
+      "title": "正在开发"
+    },
+    "frame": {
+      "nav1": "绿荫",
+      "nav2": "校园",
+      "nav3": "消息",
+      "nav4": "我的"
+    },
+    "article_page": {
+      "title": "绿荫新闻"
+    },
+    "me_page": {
+      "title": "个人中心"
+    },
+    "settings_page": {
+      "title": "设置",
+      "theme_color": "主题颜色",
+      "logout": "退出登录"
+    },
+    "theme_page": {
+      "follow_dark": "夜间模式跟随系统",
+      "title": "主题颜色",
+      "blue": "知乎蓝",
+      "indigo": "贤者之蓝",
+      "teal": "水鸭青",
+      "green": "酷安绿",
+      "pink": "Bili粉",
+      "dark": "夜间模式"
+    },
+    "login_page": {
+      "title": "用户登录",
+      "id": "学号",
+      "id_hint": "请输入您的学号",
+      "password": "密码",
+      "password_hint": "您的登录密码",
+      "confirm": "确认登录",
+      "register": "注册"
+    },
+    "avatar_page": {
+      "title": "修改头像",
+      "gallery": "相册",
+      "camera": "拍照",
+      "confirm": "确认上传",
+      "uploading": "正在上传",
+      "upload_fail": "上传失败, 请重试"
+    }
+  },
+  "widgets": {
+    "app_info": {
+      "settings": "设置",
+      "maintainer": "维护人员",
+      "version": "版本信息",
+      "announcement": "声明"
+    },
+    "me_offline": {
+      "label": "登录"
+    },
+    "me_online": {
+      "id": "学号",
+      "name": "姓名",
+      "join_date": "加入时间"
+    },
+    "dio_button": {
+      "install": "安装"
+    }
+  },
+  "utils": {
+    "login_handler": {
+      "validate_id": "只允许输入数字",
+      "validate_pass": "大小写字母和数字的组合,不能使用特殊字符,长度8-20",
+      "login_fail": "账号或密码错误!",
+      "register_fail": "您的帐号已经存在, 请直接登录",
+      "name_validate": "请进行实名验证",
+      "join_date_validate": "请填写加入时间"
+    },
+    "version_manager": {
+      "checking": "正在检查更新",
+      "is_latest": "已是最新版本",
+      "exist_latest": "有新版本",
+      "update": "更新"
+    }
+  }
+}

@@ -16,7 +16,7 @@ class _LogoutPanelState extends State<LogoutPanel> {
     } else {
       return Padding(
         padding: EdgeInsets.only(top: 30, left: 5, right: 5),
-        child: RaisedButton.icon(
+        child: FlatButton.icon(
           icon: Icon(Icons.send),
           label: Text(
               FlutterI18n.translate(context, "views.settings_page.logout")),

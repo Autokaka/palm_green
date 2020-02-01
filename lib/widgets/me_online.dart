@@ -17,6 +17,7 @@ class _MeOnlineState extends State<MeOnline> {
       children: <Widget>[
         Avatar(),
         Card(
+          elevation: 0,
           child: Column(
             children: <Widget>[
               ListTile(

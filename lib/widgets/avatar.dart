@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:palm_green/models/user.dart';
@@ -27,8 +26,8 @@ class _AvatarState extends State<Avatar> {
       width: 150,
       height: 150,
       child: Material(
+        elevation: 0,
         shape: CircleBorder(),
-        elevation: 5,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: GestureDetector(
           child: _avatar,
@@ -57,10 +56,10 @@ class _AvatarState extends State<Avatar> {
       _avatar = CachedNetworkImage(
         imageUrl: json.decode(response.data),
         fit: BoxFit.cover,
-        placeholder: (context, url) => Icon(CommunityMaterialIcons.download),
-        errorWidget: (context, url, error) => Image(
-          image: AssetImage("assets/images/default_avatar.png"),
-        ),
+        placeholder: (context, url) =>
+            Image.asset("assets/images/default_avatar.png"),
+        errorWidget: (context, url, error) =>
+            Image.asset("assets/images/default_avatar.png"),
       );
     }
 

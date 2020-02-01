@@ -12,11 +12,12 @@ class _MeOfflineState extends State<MeOffline> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 5, left: 5, right: 5),
-      child: RaisedButton.icon(
+      padding: EdgeInsets.only(top: 15, left: 5, right: 5, bottom: 10),
+      child: FlatButton.icon(
         icon: Icon(Icons.send),
         label: Text(FlutterI18n.translate(context, "widgets.me_offline.label")),
-        textTheme: ButtonTextTheme.primary,
+        colorBrightness: Brightness.dark,
+        color: Theme.of(context).primaryColor,
         onPressed: () => QuickLauncher.go(context, LoginPage()),
       ),
     );

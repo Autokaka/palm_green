@@ -5,17 +5,21 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
 
+    <!-- Permissions options for the `network` group -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- Permissions options for the `storage` group -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- flutter_local_notifications -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Permissions options for the `camera` group -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <!-- install_plugin -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
 
-    <application android:name="io.flutter.app.FlutterApplication" android:label="palm_green" android:icon="@mipmap/ic_launcher">
+    <application android:name="io.flutter.app.FlutterApplication" android:label="掌上绿荫" android:icon="@mipmap/ic_launcher">
         <!-- flutter_local_notifications -->
         <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>

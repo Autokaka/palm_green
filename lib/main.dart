@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:palm_green/utils/protocol.dart';
 import 'package:palm_green/models/user.dart';
 import 'package:palm_green/utils/version_manager.dart';
 import 'package:palm_green/views/frame.dart';
 import 'package:palm_green/models/theme_color.dart';
+import 'package:palm_green/views/protocol_page/protocol_page.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
+  // debugPaintSizeEnabled = true;
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeColor>(create: (_) => ThemeColor()),
         ChangeNotifierProvider<User>(create: (_) => User()),
         ChangeNotifierProvider<VersionManager>(create: (_) => VersionManager()),
+        ChangeNotifierProvider<Protocol>(create: (_) => Protocol()),
       ],
       child: MyApp(),
     ),
@@ -42,7 +47,7 @@ class MyApp extends StatelessWidget {
       darkTheme: Provider.of<ThemeColor>(context).followSystem
           ? ThemeData.dark()
           : null, // 监听系统夜间模式
-      home: Frame(),
+      home: Provider.of<Protocol>(context).pass ? Frame() : ProtocolPage(),
     );
   }
 }

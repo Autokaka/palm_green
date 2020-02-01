@@ -14,42 +14,43 @@ import 'package:palm_green/widgets/easy_list.dart';
 
 class VersionManager with ChangeNotifier {
   String _version = "";
+  String _display = "";
   BuildContext _context;
 
   VersionManager() {
     _initState();
   }
 
-  get version => _version;
+  get display => _display;
 
   void _initState() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     _version = packageInfo.version;
+    _display = _version;
   }
 
   void checkUpdate(BuildContext context) async {
     _context = context;
-    String curVer = _version;
-    _version =
-        FlutterI18n.translate(_context, "utils.version_manager.checking");
+    _display = FlutterI18n.translate(context, "utils.version_manager.checking");
     notifyListeners();
 
-    Response response = await Dio().get(UrlRef.checkUpdate);
+    Response response = await Dio().post(UrlRef.checkUpdate, data: _version);
     var result = json.decode(response.data);
     if (result is bool && !result) {
-      _version =
+      _display =
           FlutterI18n.translate(_context, "utils.version_manager.is_latest");
       notifyListeners();
       Timer(Duration(seconds: 2), () {
-        _version = curVer;
+        _display = _version;
         notifyListeners();
       });
     } else {
-      String url = result["latest"];
-      String changelog = result["changelog"];
-      _version =
+      _display = "● " +
           FlutterI18n.translate(_context, "utils.version_manager.exist_latest");
       notifyListeners();
+
+      String url = result["latest"];
+      String changelog = result["changelog"];
 
       Dialogger.showBottom(
         context: _context,

@@ -34,10 +34,13 @@
       "title": "用户登录",
       "id": "学号",
       "id_hint": "请输入您的学号",
+      "name": "姓名",
+      "name_hint": "请输入您的姓名",
       "password": "密码",
       "password_hint": "您的登录密码",
       "confirm": "确认登录",
-      "register": "注册"
+      "register": "注册",
+      "confirm_register": "确认注册"
     },
     "avatar_page": {
       "title": "修改头像",
@@ -46,6 +49,27 @@
       "confirm": "确认上传",
       "uploading": "正在上传",
       "upload_fail": "上传失败, 请重试"
+    },
+    "protocol_page": {
+      "title": "用户协议",
+      "read": "我已认真阅读全部条款",
+      "unread": "您还未勾选\"我已认真阅读全部条款\"",
+      "confirm": "确认",
+      "decline": "拒绝"
+    },
+    "im_page": {
+      "title": "绿荫聊天室"
+    },
+    "msg_page": {
+      "title": "消息"
+    },
+    "school_page": {
+      "title": "校园生活",
+      "announcement": "教务通知",
+      "schedule": "学生课表查询"
+    },
+    "school_ann_page": {
+      "title": "教务通知"
     }
   },
   "widgets": {
@@ -70,11 +94,8 @@
   "utils": {
     "login_handler": {
       "validate_id": "只允许输入数字",
-      "validate_pass": "大小写字母和数字的组合,不能使用特殊字符,长度8-20",
-      "login_fail": "账号或密码错误!",
-      "register_fail": "您的帐号已经存在, 请直接登录",
-      "name_validate": "请进行实名验证",
-      "join_date_validate": "请填写加入时间"
+      "validate_name": "只允许输入中文, 英文, 长度2-10",
+      "validate_pass": "大小写字母和数字的组合, 不能使用特殊字符, 长度8-20"
     },
     "version_manager": {
       "checking": "正在检查更新",

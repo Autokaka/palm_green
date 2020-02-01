@@ -15,6 +15,7 @@ class _AppInfoState extends State<AppInfo> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       child: Column(
         children: <Widget>[
           ListTile(
@@ -27,7 +28,7 @@ class _AppInfoState extends State<AppInfo> {
             leading: Icon(CommunityMaterialIcons.cloud),
             title: Text(
                 FlutterI18n.translate(context, "widgets.app_info.version")),
-            subtitle: Text(Provider.of<VersionManager>(context).version),
+            subtitle: Text(Provider.of<VersionManager>(context).display),
             onTap: () => Provider.of<VersionManager>(context, listen: false)
                 .checkUpdate(context),
           ),

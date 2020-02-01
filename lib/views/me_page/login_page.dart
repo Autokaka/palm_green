@@ -10,7 +10,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _idController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
   TextEditingController _passController = TextEditingController();
+  bool _registerMode = false;
   LoginHandler _loginHandler;
   GlobalKey _formKey = GlobalKey<FormState>();
 
@@ -18,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(FlutterI18n.translate(context, "views.login_page.title")),
       ),
       body: Builder(
@@ -30,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 children: <Widget>[
+                  // 账户
                   TextFormField(
                     controller: _idController,
                     decoration: InputDecoration(
@@ -37,10 +41,26 @@ class _LoginPageState extends State<LoginPage> {
                           FlutterI18n.translate(context, "views.login_page.id"),
                       hintText: FlutterI18n.translate(
                           context, "views.login_page.id_hint"),
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(CommunityMaterialIcons.star),
                     ),
                     validator: (value) => _loginHandler.validateId(value),
                   ),
+                  // 姓名
+                  _registerMode
+                      ? TextFormField(
+                          controller: _nameController,
+                          decoration: InputDecoration(
+                            labelText: FlutterI18n.translate(
+                                context, "views.login_page.name"),
+                            hintText: FlutterI18n.translate(
+                                context, "views.login_page.name_hint"),
+                            prefixIcon: Icon(Icons.person),
+                          ),
+                          validator: (value) =>
+                              _loginHandler.validateName(value),
+                        )
+                      : Container(),
+                  // 密码
                   TextFormField(
                     controller: _passController,
                     decoration: InputDecoration(
@@ -57,31 +77,39 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      RaisedButton.icon(
-                        icon: Icon(CommunityMaterialIcons.login),
-                        label: Text(
-                          FlutterI18n.translate(
-                              context, "views.login_page.confirm"),
-                        ),
-                        textTheme: ButtonTextTheme.primary,
-                        onPressed: () => _loginHandler.login(
-                          _formKey,
-                          _idController.text,
-                          _passController.text,
-                        ),
-                      ),
+                      // 登录按钮
+                      _registerMode
+                          ? Container()
+                          : FlatButton.icon(
+                              color: Theme.of(context).primaryColor,
+                              colorBrightness: Brightness.dark,
+                              icon: Icon(CommunityMaterialIcons.login),
+                              label: Text(
+                                FlutterI18n.translate(
+                                    context, "views.login_page.confirm"),
+                              ),
+                              onPressed: () => _loginHandler.login(
+                                _formKey,
+                                _idController.text,
+                                _passController.text,
+                              ),
+                            ),
+                      // 注册按钮
                       Padding(padding: EdgeInsets.all(10)),
                       FlatButton.icon(
                         icon: Icon(CommunityMaterialIcons.registered_trademark),
+                        color: _registerMode
+                            ? Theme.of(context).primaryColor
+                            : null,
+                        colorBrightness: _registerMode ? Brightness.dark : null,
                         label: Text(
-                          FlutterI18n.translate(
-                              context, "views.login_page.register"),
+                          _registerMode
+                              ? FlutterI18n.translate(
+                                  context, "views.login_page.confirm_register")
+                              : FlutterI18n.translate(
+                                  context, "views.login_page.register"),
                         ),
-                        onPressed: () => _loginHandler.register(
-                          _formKey,
-                          _idController.text,
-                          _passController.text,
-                        ),
+                        onPressed: _onRegisterClick,
                       ),
                     ],
                   ),
@@ -92,5 +120,20 @@ class _LoginPageState extends State<LoginPage> {
         },
       ),
     );
+  }
+
+  void _onRegisterClick() {
+    if (!_registerMode) {
+      setState(() {
+        _registerMode = true;
+      });
+    } else {
+      _loginHandler.register(
+        _formKey,
+        _idController.text,
+        _nameController.text,
+        _passController.text,
+      );
+    }
   }
 }

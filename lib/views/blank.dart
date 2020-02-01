@@ -6,6 +6,7 @@ class Blank extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(FlutterI18n.translate(context, "views.blank.title")),
       ),
     );

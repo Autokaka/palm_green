@@ -20,6 +20,15 @@ class LoginHandler {
     return request;
   }
 
+  String validateName(String value) {
+    value = value.trim();
+    String request =
+        FlutterI18n.translate(_context, "utils.login_handler.validate_name");
+    RegExp regExp = RegExp(r"^[\u4E00-\u9FA5A-Za-z]{2,10}");
+    if (regExp.stringMatch(value) == value) request = null;
+    return request;
+  }
+
   String validatePass(String value) {
     value = value.trim();
     String request =
@@ -49,15 +58,17 @@ class LoginHandler {
       );
 
       dynamic resData = json.decode(response.data);
-      if (resData is bool && !resData) {
+      if (!resData["status"]) {
         final snackBar = SnackBar(
-          content: Text(FlutterI18n.translate(
-              _context, "utils.login_handler.login_fail")),
+          content: Text(resData["detail"]),
         );
         Scaffold.of(_context).showSnackBar(snackBar);
       } else {
-        Provider.of<User>(_context, listen: false)
-            .logIn(resData["id"], resData["name"], resData["join_date"]);
+        Provider.of<User>(_context, listen: false).logIn(
+          resData["detail"]["id"],
+          resData["detail"]["name"],
+          resData["detail"]["join_date"],
+        );
         Navigator.pop(_context);
       }
     } catch (e) {
@@ -68,12 +79,14 @@ class LoginHandler {
   void register(
     GlobalKey formKey,
     String id,
+    String name,
     String password,
   ) async {
     if (!(formKey.currentState as FormState).validate()) return;
 
     var formData = {
       "id": id,
+      "name": name,
       "password": password,
     };
 
@@ -84,18 +97,16 @@ class LoginHandler {
       );
       dynamic resData = json.decode(response.data);
 
-      if (resData is bool && !resData) {
+      if (!resData["status"]) {
         final snackBar = SnackBar(
-          content: Text(FlutterI18n.translate(
-              _context, "utils.login_handler.register_fail")),
+          content: Text(resData["detail"]),
         );
         Scaffold.of(_context).showSnackBar(snackBar);
       } else {
         Provider.of<User>(_context, listen: false).logIn(
-          id,
-          FlutterI18n.translate(_context, "utils.login_handler.name_validate"),
-          FlutterI18n.translate(
-              _context, "utils.login_handler.join_date_validate"),
+          resData["detail"]["id"],
+          resData["detail"]["name"],
+          resData["detail"]["join_date"],
         );
         Navigator.pop(_context);
       }

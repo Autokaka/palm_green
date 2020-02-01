@@ -17,6 +17,7 @@ class _ArticlePageState extends State<ArticlePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(FlutterI18n.translate(context, "views.article_page.title")),
       ),
       body: EasyRefresh.custom(

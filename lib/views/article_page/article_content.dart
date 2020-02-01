@@ -27,6 +27,7 @@ class _ArticleContentState extends State<ArticleContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(widget.title),
       ),
       body: EasyList(

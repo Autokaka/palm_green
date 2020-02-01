@@ -36,6 +36,7 @@ class _AvatarPageState extends State<AvatarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(FlutterI18n.translate(context, "views.avatar_page.title")),
       ),
       body: Builder(
@@ -101,7 +102,7 @@ class _AvatarPageState extends State<AvatarPage> {
               Padding(padding: EdgeInsets.all(10)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 50),
-                child: RaisedButton.icon(
+                child: FlatButton.icon(
                   color: Colors.green,
                   colorBrightness: Brightness.dark,
                   icon: Icon(CommunityMaterialIcons.upload),

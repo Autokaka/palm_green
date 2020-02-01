@@ -17,6 +17,7 @@ class _MePageState extends State<MePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(FlutterI18n.translate(context, "views.me_page.title")),
       ),
       body: EasyList(

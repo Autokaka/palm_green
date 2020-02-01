@@ -6,6 +6,7 @@ class Permissions {
   static final List<PermissionGroup> permissionList = [
     PermissionGroup.storage,
     PermissionGroup.notification,
+    PermissionGroup.camera,
   ];
 
   Permissions() {

@@ -4,10 +4,12 @@ class Dialogger {
   static void showBottom({
     @required BuildContext context,
     @required Widget child,
+    bool isDismissible = true,
   }) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
+      isDismissible: isDismissible,
       builder: (BuildContext context) {
         return Stack(
           children: <Widget>[

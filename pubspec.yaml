@@ -11,7 +11,7 @@ description: 掌上绿荫工作室
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.20.0111
+version: 0.20.0130
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
@@ -67,6 +67,15 @@ dependencies:
 
   # 图片选择器
   image_picker: ^0.6.3
+
+  # WebSocket支持
+  web_socket_channel: ^1.1.0
+
+  # 聊天气泡
+  bubble: ^1.1.9+1
+
+  # rss订阅
+  webfeed: ^0.4.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
